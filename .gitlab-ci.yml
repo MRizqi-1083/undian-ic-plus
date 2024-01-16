@@ -1,0 +1,56 @@
+stages:
+  - build
+  - package
+  - deploy
+
+variables:
+  CI_REGISTRY_USER: hendrik.nurfuad
+  CI_REGISTRY_PASSWORD: LHjjofFGh5dEzqwghMQC
+  CI_REGISTRY: 10.14.204.20:5005
+
+  DOCKER_PHP_TAG: 8.0.2-fpm-alpine
+  DOCKER_IMAGE_APP: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+  DOCKER_IMAGE_BASED: $CI_REGISTRY_IMAGE:$DOCKER_PHP_TAG
+
+Base Image:
+  stage: build
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build --no-cache -t $DOCKER_IMAGE_BASED --build-arg PHP_VERSION=$DOCKER_PHP_TAG --build-arg COMPOSER_VERSION=2.0.13 -f deploy/Dockerfile-Based .
+    - docker push $DOCKER_IMAGE_BASED
+  when: manual
+
+Package Container:
+  stage: package
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - >
+      if [ "$CI_COMMIT_REF_NAME" == "development" ]; then
+        cp env.development .env &&
+        docker build --no-cache -t $DOCKER_IMAGE_APP --build-arg DOCKER_IMAGE_BASED=$DOCKER_IMAGE_BASED -f deploy/Dockerfile-App . && 
+        docker push $DOCKER_IMAGE_APP
+      else
+        cp env.production .env &&
+        docker build --no-cache -t $DOCKER_IMAGE_APP --build-arg DOCKER_IMAGE_BASED=$DOCKER_IMAGE_BASED -f deploy/Dockerfile-App . && 
+        docker push $DOCKER_IMAGE_APP
+      fi
+  only:
+    - development
+    - production
+
+Deploy:
+  stage: deploy
+  script:
+    - >
+      if [ "$CI_COMMIT_REF_NAME" == "development" ]; then
+        kubectl set image deployment/family-day-web-admin family-day-web-admin=$DOCKER_IMAGE_APP -n development &&
+        kubectl rollout restart deploy/family-day-web-admin -n development 
+      else
+        kubectl set image deployment/family-day-web-admin family-day-web-admin=$DOCKER_IMAGE_APP -n production &&
+        kubectl rollout restart deploy/family-day-web-admin -n production
+      fi
+  only:
+    - development
+    - production

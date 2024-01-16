@@ -1,0 +1,62 @@
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            font-family: "Roboto";
+            overflow: hidden;
+        }
+
+        .form-control {
+            line-height: 2;
+        }
+
+        h2.title {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .btn-custom {
+            background-color: rgba(110, 95, 180, 1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .btn-custom:hover {
+            background-color: #33313f;
+            color: #fff;
+        }
+
+        label {
+            color: #9a9a9a;
+            font-size: 12px;
+        }
+
+        a,
+        a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a,
+        a:hover {
+            text-decoration: none;
+        }
+
+        input {
+            font-size: 14px !important;
+        }
+
+        .form-label {
+            margin-bottom: 0 !important;
+        }
+
+        @media(max-width: 932px) {
+            .display-none {
+                display: none !important;
+            }
+        }
+
+        .alert {
+            font-size: 14px !important;
+            padding: 10px !important;
+        }

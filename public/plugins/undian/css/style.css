@@ -1,0 +1,249 @@
+/* CSS reset { */
+body,
+div,
+h1,
+button,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+a:active,
+a:focus {
+    outline: 0;
+}
+
+/* } */
+
+body,
+input,
+select,
+textarea {
+    font: 18px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.75em;
+    font-weight: normal;
+    color: #bbb;
+}
+
+h1,
+a {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+#sm {
+    background: rgb(238, 238, 238);
+    background: -moz-linear-gradient(top, rgb(91 92 93) 0%, rgba(204, 204, 204, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(91 92 93)), color-stop(100%, rgba(204, 204, 204, 1)));
+    background: -webkit-linear-gradient(top, rgb(11 11 11) 0%, rgba(204, 204, 204, 1) 100%);
+    background: -o-linear-gradient(top, rgb(91 92 93) 0%, rgba(204, 204, 204, 1) 100%);
+    background: -ms-linear-gradient(top, rgb(91 92 93) 0%, rgba(204, 204, 204, 1) 100%);
+    background: linear-gradient(top, rgb(91 92 93) 0%, rgba(204, 204, 204, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc', GradientType=0);
+    width: 500px;
+    margin: 10px auto 20px;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+#sm,
+.lever button {
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .25);
+}
+
+.group,
+.reel,
+.lever {
+    display: inline-block;
+}
+
+.group,
+.lever {
+    background: -webkit-linear-gradient(top, rgb(202 202 202) 0%, rgb(17 17 17) 50%, rgb(77 77 77) 51%, rgb(227 227 227) 100%);
+}
+
+.group {
+    border-radius: 10px;
+    padding: 20px 0 20px 20px;
+    margin-top: 10px;
+}
+
+.reel {
+    background: #fff;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 50%, rgba(225, 225, 225, 1) 51%, rgba(246, 246, 246, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(50%, rgba(241, 241, 241, 1)), color-stop(51%, rgba(225, 225, 225, 1)), color-stop(100%, rgba(246, 246, 246, 1)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 50%, rgba(225, 225, 225, 1) 51%, rgba(246, 246, 246, 1) 100%);
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 50%, rgba(225, 225, 225, 1) 51%, rgba(246, 246, 246, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 50%, rgba(225, 225, 225, 1) 51%, rgba(246, 246, 246, 1) 100%);
+    background: linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 50%, rgba(225, 225, 225, 1) 51%, rgba(246, 246, 246, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0);
+    text-align: center;
+    float: left;
+    padding: 0 10px;
+    /*width: 80px;*/
+    width: 420px;
+    height: 100px;
+    overflow: hidden;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, .3) inset, 0 0px 1px rgba(0, 0, 0, .2) inset;
+}
+
+.lever {
+    float: right;
+    padding-right: 20px;
+}
+
+.lever button {
+    text-align: center;
+    border-radius: 10px;
+    line-height: 100px;
+    width: 100px;
+    border: none;
+    font-size: 1.8em;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    background: rgb(252, 255, 244);
+    background: -moz-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(233, 233, 206, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(252, 255, 244, 1)), color-stop(100%, rgba(233, 233, 206, 1)));
+    background: -webkit-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(233, 233, 206, 1) 100%);
+    background: -o-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(233, 233, 206, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(233, 233, 206, 1) 100%);
+    background: linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(233, 233, 206, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfff4', endColorstr='#e9e9ce', GradientType=0);
+}
+
+.lever button:active {
+    color: #900;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+    margin: 2px 0 -2px;
+}
+
+.msg {
+    text-align: center;
+    color: #bbb;
+    font-size: 1.8em;
+    padding: 25px 0 5px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .3), 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+a {
+    color: #222cff;
+    margin-top: 15px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff4c00;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(digital.otf);
+}
+
+.reel p {
+    font-family: myFirstFont;
+    font-stretch: expanded;
+    color: #343434;
+}
+
+#plane {
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    /* border-bottom: 10px solid #B8312F;
+  border-top: 20px dashed #66D4FF;
+  background-color: rgb(0, 175, 225);
+  background-image: url('../img/plane.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom left;*/
+    margin-top: 40px;
+}
+
+#plane .content {
+    width: 100%;
+    float: left;
+    font-size: 50px;
+    font-weight: 300;
+    line-height: 42px;
+    /*  margin-top: 30px;*/
+    text-align: center;
+}
+
+#plane .content,
+footer .content {
+    font-size: 80px;
+    font-weight: 300;
+    line-height: 80px;
+}
+
+.badge {
+    color: white;
+    vertical-align: middle;
+    font-size: 30px;
+    background-color: rgb(0, 175, 225);
+}
+
+#planeMachine {
+    height: 97px;
+    overflow: hidden;
+    display: inline-block;
+    text-align: left;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#bg {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+#bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+}
+
+.ww {
+    margin-top: 150px;
+    position: absolute;
+    width: 400px;
+    margin-left: -450px;
+    text-align: center;
+    height: fit-content;
+    line-height: initial;
+    font-size: 32px;
+    font-weight: 600;
+    background-color: rgb(52 52 51);
+    text-shadow: 0px 1px 1px #e3bf36;
+    color: transparent;
+    -webkit-background-clip: text;
+}

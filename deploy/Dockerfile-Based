@@ -1,0 +1,35 @@
+ARG PHP_VERSION
+ARG COMPOSER_VERSION
+
+FROM composer:${COMPOSER_VERSION} as composer
+FROM php:${PHP_VERSION}
+
+RUN apk update && \
+    apk add --no-cache openssl curl ca-certificates && \
+    printf "%s%s%s\n" \
+    "http://nginx.org/packages/alpine/v" \
+    `egrep -o '^[0-9]+\.[0-9]+' /etc/alpine-release` \
+    "/main" | tee -a /etc/apk/repositories && \
+    curl -o /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub && \
+    openssl rsa -pubin -in /tmp/nginx_signing.rsa.pub -text -noout && \
+    mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/ && \
+    apk update && apk add --no-cache supervisor nginx
+
+RUN apk update \
+    && apk add --no-cache \
+        postgresql-dev \
+        oniguruma-dev \
+        freetype-dev \
+        libjpeg-turbo-dev \
+        libpng-dev \
+        libzip-dev \
+        openldap-dev \
+        libwebp-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp \
+    && docker-php-ext-install pdo pdo_pgsql pgsql mbstring zip ldap gd \
+    && docker-php-ext-enable pdo pdo_pgsql pgsql mbstring zip ldap gd
+
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+
+RUN composer --version && nginx -v && php -m
